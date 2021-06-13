@@ -32,7 +32,7 @@ public class Order {
 
     @CommandHandler
     public void handle(RemoveProductCommand command) {
-        AggregateLifecycle.apply(new RemoveProductCommand(orderId, command.getProduct()));
+        AggregateLifecycle.apply(new RemoveProductEvent(command.getOrderId(), command.getProduct()));
     }
 
     @EventSourcingHandler
@@ -49,7 +49,7 @@ public class Order {
     }
 
     @EventSourcingHandler
-    protected void on(RemoveroductEvent event) {
+    protected void on(RemoveProductEvent event) {
         this.orderId = event.getOrderId();
         this.product = event.getProduct();
     }

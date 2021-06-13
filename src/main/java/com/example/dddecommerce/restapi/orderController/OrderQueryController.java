@@ -1,6 +1,7 @@
-package com.example.dddecommerce.restapi;
+package com.example.dddecommerce.restapi.orderController;
 
-import com.example.dddecommerce.coreapi.*;
+import com.example.dddecommerce.coreapi.OrderProductsQuery;
+import com.example.dddecommerce.coreapi.OrderTotalQuery;
 import org.axonframework.messaging.responsetypes.MultipleInstancesResponseType;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +12,11 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 @RestController
-public class QueryController {
+public class OrderQueryController {
 
   private final QueryGateway queryGateway;
 
-  public QueryController(QueryGateway queryGateway) { this.queryGateway = queryGateway; }
+  public OrderQueryController(QueryGateway queryGateway) { this.queryGateway = queryGateway; }
 
   @GetMapping("/orders/{orderId}/products")
   public Future<List<String>> productsInOrder(@PathVariable String orderId) {

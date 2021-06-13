@@ -1,6 +1,9 @@
-package com.example.dddecommerce.restapi;
+package com.example.dddecommerce.restapi.orderController;
 
-import com.example.dddecommerce.coreapi.*;
+
+import com.example.dddecommerce.coreapi.AddProductCommand;
+import com.example.dddecommerce.coreapi.CreateOrderCommand;
+import com.example.dddecommerce.coreapi.RemoveProductCommand;
 import com.example.dddecommerce.restapi.dto.Order;
 import com.example.dddecommerce.restapi.dto.Product;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -15,11 +18,11 @@ import java.util.UUID;
 import java.util.concurrent.Future;
 
 @RestController
-public class CommandController {
+public class OrderCommandController {
 
   private final CommandGateway commandGateway;
 
-  public CommandController(CommandGateway commandGateway) {
+  public OrderCommandController(CommandGateway commandGateway) {
     this.commandGateway = commandGateway;
   }
 

@@ -1,6 +1,9 @@
 package com.example.dddecommerce.query.orders;
 
-import com.example.dddecommerce.coreapi.*;
+import com.example.dddecommerce.coreapi.AddProductEvent;
+import com.example.dddecommerce.coreapi.OrderCreatedEvent;
+import com.example.dddecommerce.coreapi.OrderProductsQuery;
+import com.example.dddecommerce.coreapi.RemoveProductEvent;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;
@@ -28,12 +31,12 @@ public class OrderProductsProjection {
   }
 
   @EventHandler
-  public void on(AddProductCommand event) {
+  public void on(AddProductEvent event) {
     repository.save(new OrderProducts(event.getOrderId(), event.getProduct(), event.getPrice()));
   }
 
   @EventHandler
-  public void on(RemoveProductCommand event) {
+  public void on(RemoveProductEvent event) {
     repository.deleteByOrderIdAndProduct(event.getOrderId(), event.getProduct());
   }
 }
