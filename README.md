@@ -20,34 +20,39 @@
 
 Para executar esse projeto, será necessário as tecnologias: 
 
-- [Java](https://www.java.com/pt-BR/download/ie_manual.jsp?locale=pt_BR)
+- [Java 1.8](https://www.java.com/pt-BR/download/ie_manual.jsp?locale=pt_BR)
 - [Maven](https://maven.apache.org/download.cgi)
-- [Postman](https://www.postman.com/downloads/)
+- [Axon Server](https://axoniq.io/download)
 - [MySql](https://www.mysql.com/downloads/)
+- [Xampp (facilitar Tomcat e Mysql)](https://www.apachefriends.org/pt_br/index.html)
 
-## 💻 Projeto
+## 💻  Projeto
 
+#### Passo 1
 Configurar o MySql com o usuário root e senha vazia como o padrão
 
-Inserir valores iniciais conforme: [Adfego.sql](cadastro/src/main/java/br/org/adfego/cadastro/database/adfego.sql)
-
-
-Para gerar o executável da aplicação, após instalar e configurar o java e o maven, junto com suas
-variáveis ambiente, executar o comando no diretório da aplicação:
-
-
+#### Passo 2
+Inicie o servidor Axon Server com o comando:
 
 ```bash
-> mvn  clean package spring-boot:repackage
+> java -jar axonserver.java
 ```
 
-No diretório target:
+#### Passo 3
+A aplicação já estará pronta para consumir os serviços de escalonamento e requisições, podemdo assim
+iniciar a aplicação springboot DddecommerceApplication
 
-```bash
-> java -jar cadastro-0.0.1-SNAPSHOT.jar
+#### Passo 4
+A aplicação poderá ser acessada pelo Swagger pelo link:
+[localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+### Conteiner Docker
+
+Caso queira ser instanciado em um conteiner Docker, execute:
+
 ```
-
-Para realizar as requisições segue o arquivo postman: [Requisições](Cadastro.postman_collection.json)
+script de shell docker run -d -p 8024: 8024 -p 8124: 8124 -p 8224: 8224 --name axonserver axoniq / axonserver
+```
 
  ## Licença
 
