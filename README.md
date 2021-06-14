@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    Cadastro de pessoas
+    E-Commerce DDD example
 </h1>
 
 <p align="center">
@@ -53,6 +53,13 @@ Caso queira ser instanciado em um conteiner Docker, execute:
 ```
 script de shell docker run -d -p 8024: 8024 -p 8124: 8124 -p 8224: 8224 --name axonserver axoniq / axonserver
 ```
+
+##TODO
+Algumas implementações ainda não foram contempladas:
+ - Separar Aggregate (Order, Customer, Product) em microserviços
+ - Criar Aggregate de Product
+ - Criar testes unitários para os serviços
+ - Melhorar serviços em Query e Controller 
 
  ## Licença
 
