@@ -1,9 +1,6 @@
 package com.example.dddecommerce.query.orders;
 
-import com.example.dddecommerce.coreapi.AddProductEvent;
-import com.example.dddecommerce.coreapi.OrderCreatedEvent;
-import com.example.dddecommerce.coreapi.OrderProductsQuery;
-import com.example.dddecommerce.coreapi.RemoveProductEvent;
+import com.example.dddecommerce.coreapi.*;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;
@@ -23,6 +20,10 @@ public class OrderProductsProjection {
     return repository.findOrderProductsByOrderId(query.getOrderId())
         .stream()
         .map(OrderProducts::getOrderId).sorted().collect(Collectors.toList());
+  }
+  @QueryHandler
+  public List<OrderProducts> handle(OrderTotalQuery query) {
+    return repository.findOrderProductsByOrderIdAndCustomerIsNull(query.getOrderId());
   }
 
   @EventHandler

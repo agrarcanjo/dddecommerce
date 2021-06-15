@@ -8,5 +8,7 @@ public interface OrderProductsRepository extends JpaRepository<OrderProducts, Lo
 
   List<OrderProducts> findOrderProductsByOrderId(String orderId);
 
+  List<OrderProducts> findOrderProductsByOrderIdAndCustomerIsNull(String orderId);
+
   void deleteByOrderIdAndProduct(String orderId, String product);
 }

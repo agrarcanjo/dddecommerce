@@ -2,6 +2,7 @@ package com.example.dddecommerce.restapi.orderController;
 
 import com.example.dddecommerce.coreapi.OrderProductsQuery;
 import com.example.dddecommerce.coreapi.OrderTotalQuery;
+import com.example.dddecommerce.query.orders.OrderProducts;
 import org.axonframework.messaging.responsetypes.MultipleInstancesResponseType;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,8 @@ public class OrderQueryController {
   }
 
   @GetMapping("/orders/{orderId}/total")
-  public Future<List<String>> totalOrder(@PathVariable String orderId) {
-    return queryGateway.query(new OrderTotalQuery(orderId), new MultipleInstancesResponseType<>(String.class));
+  public Future<List<OrderProducts>> totalOrder(@PathVariable String orderId) {
+    return queryGateway.query(new OrderTotalQuery(orderId), new MultipleInstancesResponseType<>(OrderProducts.class));
   }
 
 }
