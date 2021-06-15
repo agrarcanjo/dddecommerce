@@ -16,6 +16,14 @@
 
 <br>
 
+Um simples projeto E-commerce para treinar a implementação de um projeto DDD. 
+Serviços de:
+- Cadastro de Cliente 
+- Adição de Endereço ao Cliente. Consumindo o serviço ViaCEP
+- Criar um pedido.
+- Listar pedidos a partir do cliente
+- Listar todos pedidos;
+
 ## 💻  Tecnologias
 
 Para executar esse projeto, será necessário as tecnologias: 
